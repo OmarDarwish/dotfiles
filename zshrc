@@ -54,6 +54,7 @@ plugins=(git brew osx web-search extract)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export TERM="xterm-256color"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -113,3 +114,6 @@ bindkey '^H' backward-delete-char
 # http://zshwiki.org./home/zle/bindkeys#why_isn_t_control-r_working_anymore
 bindkey -M viins '^s' history-incremental-search-backward
 bindkey -M vicmd '^s' history-incremental-search-backward
+
+#Aliases
+alias tmux="tmux -2"
