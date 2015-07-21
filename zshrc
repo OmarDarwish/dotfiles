@@ -117,3 +117,6 @@ bindkey -M vicmd '^s' history-incremental-search-backward
 
 #Aliases
 alias tmux="tmux -2"
+
+#Install z
+. `brew --prefix`/etc/profile.d/z.sh
