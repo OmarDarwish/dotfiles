@@ -9,15 +9,22 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+plugin 'gmarik/Vundle.vim'
 
 " User bundles
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'bling/vim-airline'
-Bundle 'easymotion/vim-easymotion'
-Bundle 'terryma/vim-smooth-scroll'
-Bundle 'edkolev/tmuxline.vim'
+bundle 'scrooloose/nerdtree'       
+bundle 'jistr/vim-nerdtree-tabs'   
+bundle 'bling/vim-airline'         
+bundle 'easymotion/vim-easymotion' 
+bundle 'terryma/vim-smooth-scroll' 
+bundle 'edkolev/tmuxline.vim'      
+bundle 'tomtom/tcomment_vim'       
+bundle 'valloric/youcompleteme'    
+bundle 'zxiest/vim-ruby'           
+bundle 'tpope/vim-surround'        
+bundle 'jiangmiao/auto-pairs'      
+bundle 'kien/ctrlp.vim'            
+bundle 'godlygeek/tabular'         
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -43,9 +50,10 @@ nnoremap <leader>k O<Esc>
 
 "General settings
 syntax on
-set number
+set nu
 set laststatus=2  "fix vim-airline
 set showcmd
+let g:airline_theme='murmur'
 
 "Disable auto comment insertion for newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -76,3 +84,9 @@ set mouse=a
 "Splits
 map <leader>" :sp<CR>
 map <leader>% :vsp<CR>
+
+"Set line relative number in visual modes
+nnoremap <silent> v v:<C-u>set nonu rnu<CR>gv
+nnoremap <silent> V V:<C-u>set nonu rnu<CR>gv
+nnoremap <silent> <C-v> <C-v>:<C-u>set nonu rnu<CR>gv
+vnoremap <Esc> <Esc>:set nornu nu<CR>
