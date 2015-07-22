@@ -12,19 +12,19 @@ call vundle#begin()
 plugin 'gmarik/Vundle.vim'
 
 " User bundles
-bundle 'scrooloose/nerdtree'       
-bundle 'jistr/vim-nerdtree-tabs'   
-bundle 'bling/vim-airline'         
-bundle 'easymotion/vim-easymotion' 
-bundle 'terryma/vim-smooth-scroll' 
-bundle 'edkolev/tmuxline.vim'      
-bundle 'tomtom/tcomment_vim'       
-bundle 'valloric/youcompleteme'    
-bundle 'zxiest/vim-ruby'           
-bundle 'tpope/vim-surround'        
-bundle 'jiangmiao/auto-pairs'      
-bundle 'kien/ctrlp.vim'            
-bundle 'godlygeek/tabular'         
+Bundle 'scrooloose/nerdtree'       
+Bundle 'jistr/vim-nerdtree-tabs'   
+Bundle 'bling/vim-airline'         
+Bundle 'easymotion/vim-easymotion' 
+Bundle 'terryma/vim-smooth-scroll' 
+Bundle 'edkolev/tmuxline.vim'      
+Bundle 'tomtom/tcomment_vim'       
+Bundle 'valloric/youcompleteme'    
+Bundle 'zxiest/vim-ruby'           
+Bundle 'tpope/vim-surround'        
+Bundle 'jiangmiao/auto-pairs'      
+Bundle 'kien/ctrlp.vim'            
+Bundle 'godlygeek/tabular'         
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
