@@ -9,7 +9,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 " User bundles
 Bundle 'scrooloose/nerdtree'       
