@@ -120,3 +120,5 @@ alias tmux="tmux -2"
 
 #Install z
 . `brew --prefix`/etc/profile.d/z.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

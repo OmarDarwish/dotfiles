@@ -85,8 +85,18 @@ set mouse=a
 map <leader>" :sp<CR>
 map <leader>% :vsp<CR>
 
-"Set line relative number in visual modes
-nnoremap <silent> v v:<C-u>set nonu rnu<CR>gv
-nnoremap <silent> V V:<C-u>set nonu rnu<CR>gv
-nnoremap <silent> <C-v> <C-v>:<C-u>set nonu rnu<CR>gv
-vnoremap <Esc> <Esc>:set nornu nu<CR>
+"Toggle between relative and absolute line numbering
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+"Match indentation on paste
+nnoremap p ]p
+nnoremap <c-p> p
