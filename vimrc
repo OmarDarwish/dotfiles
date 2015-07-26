@@ -95,7 +95,12 @@ function! NumberToggle()
   endif
 endfunc
 
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <C-m> :call NumberToggle()<cr>
+
+"Set line relative number in visual modes
+nnoremap <silent> v v:<C-u>set nonu rnu<CR>gv
+nnoremap <silent> V V:<C-u>set nonu rnu<CR>gv
+nnoremap <silent> <C-v> <C-v>:<C-u>set nonu rnu<CR>gv
 
 "Match indentation on paste
 nnoremap p ]p
