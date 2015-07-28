@@ -54,6 +54,8 @@ set nu
 set laststatus=2  "fix vim-airline
 set showcmd
 let g:airline_theme='murmur'
+set hlsearch
+nohlsearch
 
 "Disable auto comment insertion for newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -95,7 +97,7 @@ function! NumberToggle()
   endif
 endfunc
 
-nnoremap <C-m> :call NumberToggle()<cr>
+map <leader>m :call NumberToggle()<cr>
 
 "Set line relative number in visual modes
 nnoremap <silent> v v:<C-u>set nonu rnu<CR>gv
@@ -105,3 +107,6 @@ nnoremap <silent> <C-v> <C-v>:<C-u>set nonu rnu<CR>gv
 "Match indentation on paste
 nnoremap p ]p
 nnoremap <c-p> p
+
+"Search highlighting
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
