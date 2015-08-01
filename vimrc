@@ -12,19 +12,20 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " User bundles
-Bundle 'scrooloose/nerdtree'       
-Bundle 'jistr/vim-nerdtree-tabs'   
-Bundle 'bling/vim-airline'         
-Bundle 'easymotion/vim-easymotion' 
-Bundle 'terryma/vim-smooth-scroll' 
-Bundle 'edkolev/tmuxline.vim'      
-Bundle 'tomtom/tcomment_vim'       
-Bundle 'valloric/youcompleteme'    
-Bundle 'zxiest/vim-ruby'           
-Bundle 'tpope/vim-surround'        
-Bundle 'jiangmiao/auto-pairs'      
-Bundle 'kien/ctrlp.vim'            
-Bundle 'godlygeek/tabular'         
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'bling/vim-airline'
+Bundle 'easymotion/vim-easymotion'
+Bundle 'terryma/vim-smooth-scroll'
+Bundle 'edkolev/tmuxline.vim'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'valloric/youcompleteme'
+Bundle 'zxiest/vim-ruby'
+Bundle 'tpope/vim-surround'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'kien/ctrlp.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -42,7 +43,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "Set NERDtree to open on ctrl+n
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeTabsToggle<CR>
 
 "Insert lines without entering insert mode
 nnoremap <leader>j o<Esc>
@@ -54,8 +55,10 @@ set nu
 set laststatus=2  "fix vim-airline
 set showcmd
 let g:airline_theme='murmur'
+highlight clear SignColumn
 set hlsearch
 nohlsearch
+set cursorline
 
 "Disable auto comment insertion for newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -75,7 +78,7 @@ set nowb
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=3
+set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
@@ -110,3 +113,15 @@ nnoremap <c-p> p
 
 "Search highlighting
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+"Syntastic quickstart settings
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_style_error_symbol = "✗"
+let g:syntastic_style_warning_symbol = "⚠"
+
