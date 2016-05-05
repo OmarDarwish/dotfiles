@@ -10,23 +10,29 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'elzr/vim-json'
 
 " User bundles
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'bling/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'easymotion/vim-easymotion'
-Bundle 'terryma/vim-smooth-scroll'
-Bundle 'edkolev/tmuxline.vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'valloric/youcompleteme'
-Bundle 'zxiest/vim-ruby'
-Bundle 'tpope/vim-surround'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'kien/ctrlp.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'terryma/vim-smooth-scroll'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'valloric/youcompleteme'
+Plugin 'zxiest/vim-ruby'
+Plugin 'tpope/vim-surround'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'pangloss/vim-javascript'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+Plugin 'peterRincker/vim-argumentative'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ternjs/tern_forvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,20 +61,28 @@ syntax on
 set nu
 set laststatus=2  "fix vim-airline
 set showcmd
-let g:airline_theme='murmur'
 highlight clear SignColumn
 set hlsearch
 nohlsearch
-set cursorline
 
+"Theming
+set cursorline
+let g:airline_theme='murmur'
+set t_Co=256
+colorscheme CandyPaper
+
+"Sessions
+let g:session_autosave='yes'
+let g:session_autosave_periodic=5
 "Disable auto comment insertion for newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "Scrolling
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+let g:smooth_scroll_duration=10
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, smooth_scroll_duration, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, smooth_scroll_duration, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, smooth_scroll_duration, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, smooth_scroll_duration, 4)<CR>
 
 "Disable swap files
 set noswapfile
@@ -126,3 +140,5 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_style_warning_symbol = "⚠"
 
+" Conceal settings
+set conceallevel=2
