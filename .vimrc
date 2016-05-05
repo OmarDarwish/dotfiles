@@ -32,7 +32,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'peterRincker/vim-argumentative'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'ternjs/tern_forvim'
+Plugin 'ternjs/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
