@@ -33,6 +33,9 @@ Plugin 'xolox/vim-session'
 Plugin 'peterRincker/vim-argumentative'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ternjs/tern_for_vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'rking/ag.vim'
+Plugin 'moll/vim-node'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -131,6 +134,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 "Syntastic quickstart settings
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
@@ -142,3 +146,6 @@ let g:syntastic_style_warning_symbol = "⚠"
 
 " Conceal settings
 set conceallevel=2
+
+" Update Settings (vim gitgutter)
+set updatetime=250
