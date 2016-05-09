@@ -54,6 +54,7 @@ filetype plugin indent on    " required
 
 "Set NERDtree to open on ctrl+n
 map <C-n> :NERDTreeTabsToggle<CR>
+map <leader>r :NERDTreeFind<CR>
 
 "Insert lines without entering insert mode
 nnoremap <leader>j o<Esc>
@@ -64,8 +65,9 @@ syntax on
 set nu
 set laststatus=2  "fix vim-airline
 set showcmd
-highlight clear SignColumn
 set hlsearch
+set ignorecase
+highlight clear SignColumn
 nohlsearch
 
 "Theming
@@ -124,10 +126,6 @@ map <leader>m :call NumberToggle()<cr>
 nnoremap <silent> v v:<C-u>set nonu rnu<CR>gv
 nnoremap <silent> V V:<C-u>set nonu rnu<CR>gv
 nnoremap <silent> <C-v> <C-v>:<C-u>set nonu rnu<CR>gv
-
-"Match indentation on paste
-nnoremap p ]p
-nnoremap <c-p> p
 
 "Search highlighting
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
