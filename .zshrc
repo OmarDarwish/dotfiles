@@ -49,7 +49,7 @@ ZSH_THEME="cobalt2"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew osx web-search extract npm)
+plugins=(git brew osx web-search extract npm docker)
 
 # User configuration
 
@@ -120,3 +120,16 @@ alias tmux="tmux -2"
 #Install z
 . `brew --prefix`/etc/profile.d/z.sh
 
+
+export NVM_DIR="/Users/darwisho/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+function proxyon() {
+  export http_proxy=http://usproxy.es.oneadp.com:8080
+  export https_proxy=http://usproxy.es.oneadp.com:8080
+}
+
+function proxyoff() {
+  unset http_proxy
+  unset https_proxy
+}

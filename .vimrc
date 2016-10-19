@@ -10,7 +10,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'elzr/vim-json'
 
 " User bundles
 Plugin 'scrooloose/nerdtree'
@@ -36,6 +35,15 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'rking/ag.vim'
 Plugin 'moll/vim-node'
+Plugin 'janko-m/vim-test'
+Plugin 'christoomey/vim-tmux-runner'
+Plugin 'tpope/vim-fugitive'
+Plugin 'elzr/vim-json'
+Plugin 'hashivim/vim-terraform'
+Plugin 'taiansu/nerdtree-ag'
+Plugin 'AndrewRadev/linediff.vim'
+Plugin 'chiedo/vim-sort-blocks-by'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -69,12 +77,26 @@ set hlsearch
 set ignorecase
 highlight clear SignColumn
 nohlsearch
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set diffopt+=vertical
 
 "Theming
 set cursorline
 let g:airline_theme='murmur'
 set t_Co=256
 colorscheme CandyPaper
+
+function! DiffColorToggle()
+  if &diff
+    colorscheme evening
+  else
+    if g:colors_name !~ "CandyPaper"
+      colorscheme CandyPaper
+    endif
+  endif
+endfunc
+
+autocmd BufEnter,TabEnter * :call DiffColorToggle()
 
 "Sessions
 let g:session_autosave='yes'
@@ -102,6 +124,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+set backspace=2
 
 "Mouse
 set mouse=a
@@ -132,7 +155,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 "Syntastic quickstart settings
 let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
@@ -147,3 +170,17 @@ set conceallevel=2
 
 " Update Settings (vim gitgutter)
 set updatetime=250
+
+" Vim Test
+let g:test#strategy = 'vtr'
+let test#javascript#jasmine#file_pattern = 'spec.js'
+let test#javascript#jasmine#executable = 'jasmine-node'
+let test#javascript#jasmine#options = '--forceexit'
+let test#javascript#mocha#file_pattern = 'spec.js'
+let test#javascript#mocha#executable = 'NODE_ENV=test mocha'
+let test#javascript#mocha#options = "--require 'spec/helpers/init.js'"
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
