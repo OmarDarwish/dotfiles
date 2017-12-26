@@ -49,11 +49,11 @@ ZSH_THEME="cobalt2"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew osx web-search extract npm docker)
+plugins=(git brew osx web-search extract npm docker aws)
 
 # User configuration
 
-export TERM="xterm-256color"
+export TERM="screen-256color"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -122,14 +122,25 @@ alias tmux="tmux -2"
 
 
 export NVM_DIR="/Users/darwisho/.nvm"
+export NVM_NODEJS_ORG_MIRROR=http://artifactory.es.ad.adp.com:8081/artifactory/node-dist
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 function proxyon() {
-  export http_proxy=http://usproxy.es.oneadp.com:8080
-  export https_proxy=http://usproxy.es.oneadp.com:8080
+  export http_proxy="http://usproxy.es.oneadp.com:8080"
+  export https_proxy="http://usproxy.es.oneadp.com:8080"
+  export no_proxy=169.254.169.254,adp.com,127.0.0.1,localhost,dockertr.es.ad.adp.com,stash.es.ad.adp.com,artifactory.es.ad.adp.com
 }
 
 function proxyoff() {
   unset http_proxy
   unset https_proxy
+  unset no_proxy
 }
+
+#Configure Go
+export GOPATH=~/go
+PATH=$PATH:$GOPATH/bin
+alias go=richgo
+
+# Configure Infra tools
+export INFRA_VER=0.9.4

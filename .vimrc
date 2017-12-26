@@ -43,6 +43,11 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'taiansu/nerdtree-ag'
 Plugin 'AndrewRadev/linediff.vim'
 Plugin 'chiedo/vim-sort-blocks-by'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'tjvr/vim-nearley'
+" Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
 
 
 " All of your Plugins must be added before the following line
@@ -84,25 +89,26 @@ set diffopt+=vertical
 set cursorline
 let g:airline_theme='murmur'
 set t_Co=256
-colorscheme CandyPaper
+colorscheme evening
 
-function! DiffColorToggle()
-  if &diff
-    colorscheme evening
-  else
-    if g:colors_name !~ "CandyPaper"
-      colorscheme CandyPaper
-    endif
-  endif
-endfunc
-
-autocmd BufEnter,TabEnter * :call DiffColorToggle()
+" function! DiffColorToggle()
+"   if &diff
+"     colorscheme evening
+"   else
+"     if g:colors_name !~ "CandyPaper"
+"       colorscheme CandyPaper
+"     endif
+"   endif
+" endfunc
+"
+" autocmd BufEnter,TabEnter * :call DiffColorToggle()
 
 "Sessions
 let g:session_autosave='yes'
 let g:session_autosave_periodic=5
+
 "Disable auto comment insertion for newline
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "Scrolling
 let g:smooth_scroll_duration=10
@@ -156,6 +162,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 "Syntastic quickstart settings
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
@@ -176,9 +183,9 @@ let g:test#strategy = 'vtr'
 let test#javascript#jasmine#file_pattern = 'spec.js'
 let test#javascript#jasmine#executable = 'jasmine-node'
 let test#javascript#jasmine#options = '--forceexit'
-let test#javascript#mocha#file_pattern = 'spec.js'
-let test#javascript#mocha#executable = 'NODE_ENV=test mocha'
-let test#javascript#mocha#options = "--require 'spec/helpers/init.js'"
+let test#javascript#mocha#file_pattern = 'spec.\(js\|ts\)'
+let test#javascript#mocha#executable = 'mocha'
+let test#javascript#mocha#options = "--require ts-node/register"
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
